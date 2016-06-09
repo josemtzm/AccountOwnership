@@ -24,5 +24,7 @@ namespace AccountOwnership.Models
         public System.Data.Entity.DbSet<AccountOwnership.Models.Record> Records { get; set; }
 
         public System.Data.Entity.DbSet<AccountOwnership.Models.Employee> Employees { get; set; }
+
+        public System.Data.Entity.DbSet<AccountOwnership.Models.Client> Clients { get; set; }
     }
 }

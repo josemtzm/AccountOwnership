@@ -11,52 +11,46 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using AccountOwnership.Models;
 
-namespace AccountOwnership.Controllers
+namespace AccountOwnership.Controllers.Api
 {
-    public class RecordController : ApiController
+    public class ClientController : ApiController
     {
         private AccountOwnershipContext db = new AccountOwnershipContext();
 
-        // GET: api/Record
-        public IQueryable<Record> GetRecords()
+        // GET: api/Client
+        public IQueryable<Client> GetClients()
         {
-            var records = db.Records
-                .Include(x => x.Client)
-                .Include(x => x.EVP)
-                .Include(x => x.SVP)
-                .Include(x => x.VP)
-                .Include(x => x.ED);
-            return records;
+            return db.Clients;
         }
 
-        // GET: api/Record/5
-        [ResponseType(typeof(Record))]
-        public async Task<IHttpActionResult> GetRecord(int id)
+        // GET: api/Client/5
+        [ResponseType(typeof(Client))]
+        public async Task<IHttpActionResult> GetClient(int id)
         {
-            Record record = await db.Records.FindAsync(id);
-            if (record == null)
+            Client client = await db.Clients.FindAsync(id);
+            if (client == null)
             {
                 return NotFound();
             }
 
-            return Ok(record);
+            return Ok(client);
         }
 
-        // PUT: api/Record/5
+        // PUT: api/Client/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutRecord(int id, Record record)
+        public async Task<IHttpActionResult> PutClient(int id, Client client)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != record.Id)
+            if (id != client.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(record).State = EntityState.Modified;
+            db.Entry(client).State = EntityState.Modified;
 
             try
             {
@@ -64,7 +58,7 @@ namespace AccountOwnership.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RecordExists(id))
+                if (!ClientExists(id))
                 {
                     return NotFound();
                 }
@@ -77,35 +71,35 @@ namespace AccountOwnership.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Record
-        [ResponseType(typeof(Record))]
-        public async Task<IHttpActionResult> PostRecord(Record record)
+        // POST: api/Client
+        [ResponseType(typeof(Client))]
+        public async Task<IHttpActionResult> PostClient(Client client)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Records.Add(record);
+            db.Clients.Add(client);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = record.Id }, record);
+            return CreatedAtRoute("DefaultApi", new { id = client.Id }, client);
         }
 
-        // DELETE: api/Record/5
-        [ResponseType(typeof(Record))]
-        public async Task<IHttpActionResult> DeleteRecord(int id)
+        // DELETE: api/Client/5
+        [ResponseType(typeof(Client))]
+        public async Task<IHttpActionResult> DeleteClient(int id)
         {
-            Record record = await db.Records.FindAsync(id);
-            if (record == null)
+            Client client = await db.Clients.FindAsync(id);
+            if (client == null)
             {
                 return NotFound();
             }
 
-            db.Records.Remove(record);
+            db.Clients.Remove(client);
             await db.SaveChangesAsync();
 
-            return Ok(record);
+            return Ok(client);
         }
 
         protected override void Dispose(bool disposing)
@@ -117,9 +111,9 @@ namespace AccountOwnership.Controllers
             base.Dispose(disposing);
         }
 
-        private bool RecordExists(int id)
+        private bool ClientExists(int id)
         {
-            return db.Records.Count(e => e.Id == id) > 0;
+            return db.Clients.Count(e => e.Id == id) > 0;
         }
     }
 }

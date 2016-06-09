@@ -12,6 +12,7 @@ namespace AccountOwnership.Models
         public int Id { get; set; }
         [Required]
         public DateTime StartTime { get; set; }
+        public Client Client { get; set; }
         // Foreign Key
         //public int EVPId { get; set; }
         // Navigation property
