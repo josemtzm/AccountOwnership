@@ -13,6 +13,9 @@ namespace AccountOwnership
     {
         public static void Register(HttpConfiguration config)
         {
+            var enableCorsAttribute = new EnableCorsAttribute("*",
+                                               "Origin, Content-Type, Accept",
+                                               "GET, PUT, POST, DELETE, OPTIONS");
             //var cors = new EnableCorsAttribute("http://localhost:5555", "*", "*");
             // enable  request for angularjs
             //config.EnableCors(cors);

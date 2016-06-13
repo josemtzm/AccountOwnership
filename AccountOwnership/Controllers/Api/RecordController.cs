@@ -26,6 +26,7 @@ namespace AccountOwnership.Controllers
                 .Include(x => x.SVP)
                 .Include(x => x.VP)
                 .Include(x => x.ED);
+            
             return records;
         }
 
@@ -38,8 +39,15 @@ namespace AccountOwnership.Controllers
             {
                 return NotFound();
             }
+            var recordFound = db.Records
+                .Where(x => x.Id == record.Id)
+                .Include(x => x.Client)
+                .Include(x => x.EVP)
+                .Include(x => x.SVP)
+                .Include(x => x.VP)
+                .Include(x => x.ED);
 
-            return Ok(record);
+            return Ok(recordFound);
         }
 
         // PUT: api/Record/5
