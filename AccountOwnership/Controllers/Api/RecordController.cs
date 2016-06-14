@@ -25,7 +25,8 @@ namespace AccountOwnership.Controllers
                 .Include(x => x.EVP)
                 .Include(x => x.SVP)
                 .Include(x => x.VP)
-                .Include(x => x.ED);
+                .Include(x => x.ED)
+                .Include(x => x.Status);
             
             return records;
         }
@@ -45,7 +46,8 @@ namespace AccountOwnership.Controllers
                 .Include(x => x.EVP)
                 .Include(x => x.SVP)
                 .Include(x => x.VP)
-                .Include(x => x.ED);
+                .Include(x => x.ED)
+                .Include(x => x.Status);
 
             return Ok(recordFound);
         }
@@ -54,6 +56,16 @@ namespace AccountOwnership.Controllers
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutRecord(int id, Record record)
         {
+            //var entityRecord = db.Records
+            //    .Where(c => c.Id == record.Id)
+            //    .Include(x => x.Client)
+            //    .Include(x => x.EVP)
+            //    .Include(x => x.SVP)
+            //    .Include(x => x.VP)
+            //    .Include(x => x.ED)
+            //    .Include(x => x.Status)
+            //    .AsQueryable()
+            //    .FirstOrDefault();
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -63,9 +75,34 @@ namespace AccountOwnership.Controllers
             {
                 return BadRequest();
             }
+            //if(entityRecord != null)
+            //db.Entry(record.EVP).State = EntityState.Modified;
+            //db.Entry(record.SVP).State = EntityState.Modified;
+            //db.Entry(record.VP).State = EntityState.Modified;
+            //db.Entry(record.ED).State = EntityState.Modified;
+            //db.Entry(record.Status).State = EntityState.Modified;
+            //db.Entry(record.Client).State = EntityState.Modified;
+            //db.Entry(record).State = EntityState.Modified;
 
+            //var localRecord = db.Set<Record>()
+            //             .Local
+            //             .FirstOrDefault(f => f.Id == record.Id);
+            //if (localRecord != null)
+            //{
+            //    db.Entry(localRecord).State = EntityState.Detached;
+            //}
+            //db.Entry(record).State = EntityState.Modified;
+
+            //db.Entry(record).State = EntityState.Detached;
+            //db.Entry(entityRecord).CurrentValues.SetValues(record);
+            //else
+            //return NotFound();
+
+            var thisPost = db.Records
+                .AsNoTracking()
+                .Where(r => r.Id == record.Id)
+                .FirstOrDefault();
             db.Entry(record).State = EntityState.Modified;
-
             try
             {
                 await db.SaveChangesAsync();
