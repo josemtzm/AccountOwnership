@@ -17,6 +17,7 @@ namespace AccountOwnership.Models
     
         public AccountOwnershipContext() : base("name=AccountOwnershipContext")
         {
+            Database.SetInitializer<AccountOwnershipContext>(null);
         }
 
         public System.Data.Entity.DbSet<AccountOwnership.Models.Status> Status { get; set; }
@@ -26,5 +27,6 @@ namespace AccountOwnership.Models
         public System.Data.Entity.DbSet<AccountOwnership.Models.Employee> Employees { get; set; }
 
         public System.Data.Entity.DbSet<AccountOwnership.Models.Client> Clients { get; set; }
+
     }
 }

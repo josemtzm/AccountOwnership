@@ -30,6 +30,13 @@ namespace AccountOwnership.Migrations
                 emp1, emp2, emp3, emp4
                 );
 
+            Client cli1 = new Client { Id = 1, Code = 1234, IdParent = 0, Name = "Accenture" };
+            Client cli2 = new Client { Id = 2, Code = 1234, IdParent = 1, Name = "Accenture MX" };
+            Client cli3 = new Client { Id = 3, Code = 1234, IdParent = 2, Name = "Accenture CDMX" };
+            context.Clients.AddOrUpdate(x => x.Id,
+                cli1,cli2, cli3
+               );
+
             context.Records.AddOrUpdate(x => x.Id,
                 new Record()
                 {
@@ -39,111 +46,66 @@ namespace AccountOwnership.Migrations
                     SVP = emp2,
                     VP = emp3,
                     ED = emp4,
+                    Status = stat1,
+                    Client = cli1,
                     GL_CLT_CD = "",
                     EndTime = DateTime.Now,
                     POC = "",
                     LastModifiedDate = DateTime.Now,
                     GoLiveDate = DateTime.Now,
-                    CloseDate = DateTime.Now,
-                    Status = stat1
+                    CloseDate = DateTime.Now
                 },
                 new Record()
                 {
-                    Id = 1,
+                    Id = 2,
                     StartTime = DateTime.Now,
                     EVP = emp2,
                     SVP = emp1,
                     VP = emp3,
                     ED = emp4,
+                    Status = stat1,
+                    Client = cli1,
                     GL_CLT_CD = "",
                     EndTime = DateTime.Now,
                     POC = "",
                     LastModifiedDate = DateTime.Now,
                     GoLiveDate = DateTime.Now,
-                    CloseDate = DateTime.Now,
-                    Status = stat2
+                    CloseDate = DateTime.Now
                 },
                 new Record()
                 {
-                    Id = 1,
+                    Id = 3,
                     StartTime = DateTime.Now,
                     EVP = emp3,
                     SVP = emp2,
                     VP = emp1,
                     ED = emp4,
+                    Status = stat2,
+                    Client = cli2,
                     GL_CLT_CD = "",
                     EndTime = DateTime.Now,
                     POC = "",
                     LastModifiedDate = DateTime.Now,
                     GoLiveDate = DateTime.Now,
-                    CloseDate = DateTime.Now,
-                    Status = stat1
+                    CloseDate = DateTime.Now
                 },
                 new Record()
                 {
-                    Id = 1,
+                    Id = 4,
                     StartTime = DateTime.Now,
                     EVP = emp4,
                     SVP = emp2,
                     VP = emp3,
                     ED = emp1,
+                    Status = stat3,
+                    Client = cli3,
                     GL_CLT_CD = "",
                     EndTime = DateTime.Now,
                     POC = "",
                     LastModifiedDate = DateTime.Now,
                     GoLiveDate = DateTime.Now,
-                    CloseDate = DateTime.Now,
-                    Status = stat3
+                    CloseDate = DateTime.Now
                 });
-                //new Record()
-                //{
-                //    Id = 1,
-                //    StartTime = DateTime.Now,
-                //    EVP = new Employee() { Id = 2 },
-                //    SVP = new Employee() { Id = 1 },
-                //    VP = new Employee() { Id = 3 },
-                //    ED = new Employee() { Id = 4 },
-                //    GL_CLT_CD = "",
-                //    EndTime = DateTime.Now,
-                //    POC = "",
-                //    LastModifiedDate = DateTime.Now,
-                //    GoLiveDate = DateTime.Now,
-                //    CloseDate = DateTime.Now,
-                //    Status = new Status() { Id = 2 }
-                //},
-                //new Record()
-                //{
-                //    Id = 1,
-                //    StartTime = DateTime.Now,
-                //    EVP = new Employee() { Id = 3 },
-                //    SVP = new Employee() { Id = 2 },
-                //    VP = new Employee() { Id = 1 },
-                //    ED = new Employee() { Id = 4 },
-                //    GL_CLT_CD = "",
-                //    EndTime = DateTime.Now,
-                //    POC = "",
-                //    LastModifiedDate = DateTime.Now,
-                //    GoLiveDate = DateTime.Now,
-                //    CloseDate = DateTime.Now,
-                //    Status = new Status() { Id = 2 }
-                //},
-                //new Record()
-                //{
-                //    Id = 1,
-                //    StartTime = DateTime.Now,
-                //    EVP = new Employee() { Id = 4 },
-                //    SVP = new Employee() { Id = 2 },
-                //    VP = new Employee() { Id = 3 },
-                //    ED = new Employee() { Id = 1 },
-                //    GL_CLT_CD = "",
-                //    EndTime = DateTime.Now,
-                //    POC = "",
-                //    LastModifiedDate = DateTime.Now,
-                //    GoLiveDate = DateTime.Now,
-                //    CloseDate = DateTime.Now,
-                //    Status = new Status() { Id = 1 }
-                //}
-                //);
         }
     }
 }

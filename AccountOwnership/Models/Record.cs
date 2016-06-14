@@ -12,21 +12,24 @@ namespace AccountOwnership.Models
         public int Id { get; set; }
         [Required]
         public DateTime StartTime { get; set; }
+        // Foreign Key
+        //public int Client_Id { get; set; }
+        // Navigation property
         public Client Client { get; set; }
         // Foreign Key
-        //public int EVPId { get; set; }
+        //public int EVP_Id { get; set; }
         // Navigation property
         public Employee EVP { get; set; }
         // Foreign Key
-        //public int SVPId { get; set; }
+        //public int SVP_Id { get; set; }
         // Navigation property
         public Employee SVP { get; set; }
         // Foreign Key
-        //public int VPId { get; set; }
+        //public int VP_Id { get; set; }
         // Navigation property
         public Employee VP { get; set; }
         // Foreign Key
-        //public int EDId { get; set; }
+        //public int ED_Id { get; set; }
         // Navigation property
         public Employee ED { get; set; }
         //[Required]
@@ -42,7 +45,7 @@ namespace AccountOwnership.Models
         [Required]
         public DateTime CloseDate { get; set; }
         // Foreign Key
-        //public int StatusId { get; set; }
+        //public int Status_Id { get; set; }
         // Navigation property
         [Required]
         public Status Status { get; set; }

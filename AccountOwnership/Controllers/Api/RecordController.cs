@@ -94,6 +94,13 @@ namespace AccountOwnership.Controllers
                 return BadRequest(ModelState);
             }
 
+            db.Entry(record.EVP).State = EntityState.Unchanged;
+            db.Entry(record.SVP).State = EntityState.Unchanged;
+            db.Entry(record.VP).State = EntityState.Unchanged;
+            db.Entry(record.ED).State = EntityState.Unchanged;
+            db.Entry(record.Status).State = EntityState.Unchanged;
+            db.Entry(record.Client).State = EntityState.Unchanged;
+
             db.Records.Add(record);
             await db.SaveChangesAsync();
 
