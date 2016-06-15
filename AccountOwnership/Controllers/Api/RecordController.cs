@@ -58,16 +58,6 @@ namespace AccountOwnership.Controllers
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutRecord(int id, Record record)
         {
-            //var entityRecord = db.Records
-            //    .Where(c => c.Id == record.Id)
-            //    .Include(x => x.Client)
-            //    .Include(x => x.EVP)
-            //    .Include(x => x.SVP)
-            //    .Include(x => x.VP)
-            //    .Include(x => x.ED)
-            //    .Include(x => x.Status)
-            //    .AsQueryable()
-            //    .FirstOrDefault();
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -77,74 +67,10 @@ namespace AccountOwnership.Controllers
             {
                 return BadRequest();
             }
-            //if(entityRecord != null)
-            //db.Entry(record.EVP).State = EntityState.Modified;
-            //db.Entry(record.SVP).State = EntityState.Modified;
-            //db.Entry(record.VP).State = EntityState.Modified;
-            //db.Entry(record.ED).State = EntityState.Modified;
-            //db.Entry(record.Status).State = EntityState.Modified;
-            //db.Entry(record.Client).State = EntityState.Modified;
-            //db.Entry(record).State = EntityState.Modified;
 
-            //var localRecord = db.Set<Record>()
-            //             .Local
-            //             .FirstOrDefault(f => f.Id == record.Id);
-            //if (localRecord != null)
-            //{
-            //    db.Entry(localRecord).State = EntityState.Detached;
-            //}
-            //db.Entry(record).State = EntityState.Modified;
-
-            //db.Entry(record).State = EntityState.Detached;
-            //db.Entry(entityRecord).CurrentValues.SetValues(record);
-            //else
-            //return NotFound();
             try
             {
-                //db.Records.Attach(record);
-                //db.Entry(record.EVP).State = EntityState.Unchanged;
-                //db.Entry(record.SVP).State = EntityState.Unchanged;
-                //db.Entry(record.VP).State = EntityState.Unchanged;
-                //db.Entry(record.ED).State = EntityState.Unchanged;
-                //db.Entry(record.Status).State = EntityState.Unchanged;
-                //db.Entry(record.Client).State = EntityState.Unchanged;
-
-                //db.Records.Add(record);
-                //await db.SaveChangesAsync();
-
-                ////db.Records.AddOrUpdate(record);
-                //db.Set<Record>().AddOrUpdate(record);
-                //var aFound = db.Records
-                //            .AsNoTracking()
-                //            .Any(r => r.Id == record.Id);
-                //db.Records.AddOrUpdate(record);
-                //db.Entry(record).State = EntityState.Modified;
-                //db.Entry(record.ED).State = EntityState.Detached;
-                //db.Entry(record).State = EntityState.Modified;
-
-                //Record existing = db.Set<Record>()
-                //    .AsNoTracking()
-                //    .Where(c => c.Id == record.Id)
-                //    .FirstOrDefault();
                 db.Entry(record).State = EntityState.Modified;
-
-                //db.Records.Attach(record);
-                //db.Entry(record).Property(x => x.ED).IsModified = true;
-
-                //var entity = db.Records
-                //    .Where(c => c.Id == id)
-                //    .AsQueryable()
-                //    .FirstOrDefault();
-
-                //if(entity == null)
-                //{
-                //    db.Records.AddOrUpdate(record);
-                //}
-                //else
-                //{
-                //    db.Entry(entity).CurrentValues.SetValues(record);
-                //}
-
             }
             catch (Exception ex)
             {
@@ -166,22 +92,6 @@ namespace AccountOwnership.Controllers
                     throw;
                 }
             }
-
-            catch (DbEntityValidationException e)
-            {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
-            }
-
             return StatusCode(HttpStatusCode.NoContent);
         }
 
