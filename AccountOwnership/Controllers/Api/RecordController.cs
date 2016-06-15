@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AccountOwnership.Models;
+using System.Data.Entity.Validation;
 
 namespace AccountOwnership.Controllers
 {
@@ -97,12 +99,58 @@ namespace AccountOwnership.Controllers
             //db.Entry(entityRecord).CurrentValues.SetValues(record);
             //else
             //return NotFound();
+            try
+            {
+                //db.Records.Attach(record);
+                //db.Entry(record.EVP).State = EntityState.Unchanged;
+                //db.Entry(record.SVP).State = EntityState.Unchanged;
+                //db.Entry(record.VP).State = EntityState.Unchanged;
+                //db.Entry(record.ED).State = EntityState.Unchanged;
+                //db.Entry(record.Status).State = EntityState.Unchanged;
+                //db.Entry(record.Client).State = EntityState.Unchanged;
 
-            var thisPost = db.Records
-                .AsNoTracking()
-                .Where(r => r.Id == record.Id)
-                .FirstOrDefault();
-            db.Entry(record).State = EntityState.Modified;
+                //db.Records.Add(record);
+                //await db.SaveChangesAsync();
+
+                ////db.Records.AddOrUpdate(record);
+                //db.Set<Record>().AddOrUpdate(record);
+                //var aFound = db.Records
+                //            .AsNoTracking()
+                //            .Any(r => r.Id == record.Id);
+                //db.Records.AddOrUpdate(record);
+                //db.Entry(record).State = EntityState.Modified;
+                //db.Entry(record.ED).State = EntityState.Detached;
+                //db.Entry(record).State = EntityState.Modified;
+
+                //Record existing = db.Set<Record>()
+                //    .AsNoTracking()
+                //    .Where(c => c.Id == record.Id)
+                //    .FirstOrDefault();
+                db.Entry(record).State = EntityState.Modified;
+
+                //db.Records.Attach(record);
+                //db.Entry(record).Property(x => x.ED).IsModified = true;
+
+                //var entity = db.Records
+                //    .Where(c => c.Id == id)
+                //    .AsQueryable()
+                //    .FirstOrDefault();
+
+                //if(entity == null)
+                //{
+                //    db.Records.AddOrUpdate(record);
+                //}
+                //else
+                //{
+                //    db.Entry(entity).CurrentValues.SetValues(record);
+                //}
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return StatusCode(HttpStatusCode.NotModified);
+            }
             try
             {
                 await db.SaveChangesAsync();
@@ -117,6 +165,21 @@ namespace AccountOwnership.Controllers
                 {
                     throw;
                 }
+            }
+
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
             }
 
             return StatusCode(HttpStatusCode.NoContent);
