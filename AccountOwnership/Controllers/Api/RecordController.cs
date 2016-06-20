@@ -89,7 +89,7 @@ namespace AccountOwnership.Controllers
                 }
                 else
                 {
-                    throw;
+                    return StatusCode(HttpStatusCode.NotModified);
                 }
             }
             return StatusCode(HttpStatusCode.NoContent);
