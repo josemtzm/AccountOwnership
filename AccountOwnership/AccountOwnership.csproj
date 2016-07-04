@@ -251,9 +251,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606141928136_Initial.cs" />
-    <Compile Include="Migrations\201606141928136_Initial.Designer.cs">
-      <DependentUpon>201606141928136_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201606231509273_Initial.cs" />
+    <Compile Include="Migrations\201606231509273_Initial.Designer.cs">
+      <DependentUpon>201606231509273_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -302,6 +302,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\AccountOwnership.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -346,8 +347,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606141928136_Initial.resx">
-      <DependentUpon>201606141928136_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606231509273_Initial.resx">
+      <DependentUpon>201606231509273_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

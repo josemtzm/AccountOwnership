@@ -9,6 +9,7 @@ namespace AccountOwnership.Models
 {
     public class Record
     {
+        [Required]
         public int Id { get; set; }
         [Required]
         public DateTime StartTime { get; set; }
@@ -23,11 +24,9 @@ namespace AccountOwnership.Models
         [Required]
         public Employee ED { get; set; }
         [Required]
-        public string GL_CLT_CD { get; set; }
-        [Required]
         public DateTime EndTime { get; set; }
-        [Required]
-        public string POC { get; set; }
+        //[Required]
+        public Employee POC { get; set; }
         [Required]
         public DateTime LastModifiedDate { get; set; }
         [Required]
