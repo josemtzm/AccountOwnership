@@ -13,7 +13,7 @@ namespace AccountOwnership.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201606231509273_Initial"; }
+            get { return "201607041851330_Initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -14,8 +14,6 @@ namespace AccountOwnership.Models
         [Required]
         public DateTime StartTime { get; set; }
         [Required]
-        public Client Client { get; set; }
-        [Required]
         public Employee EVP { get; set; }
         [Required]
         public Employee SVP { get; set; }
@@ -24,9 +22,15 @@ namespace AccountOwnership.Models
         [Required]
         public Employee ED { get; set; }
         [Required]
-        public DateTime EndTime { get; set; }
+        public Employee TAM { get; set; }
+        [Required]
+        public Employee Finance { get; set; }
+        [Required]
+        public Employee eWFM { get; set; }
         //[Required]
         public Employee POC { get; set; }
+        [Required]
+        public DateTime EndTime { get; set; }
         [Required]
         public DateTime LastModifiedDate { get; set; }
         [Required]
@@ -35,5 +39,7 @@ namespace AccountOwnership.Models
         public DateTime CloseDate { get; set; }
         [Required]
         public Status Status { get; set; }
+        [Required]
+        public Client Client { get; set; }
     }
 }

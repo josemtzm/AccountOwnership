@@ -251,9 +251,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606231509273_Initial.cs" />
-    <Compile Include="Migrations\201606231509273_Initial.Designer.cs">
-      <DependentUpon>201606231509273_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201607041851330_Initial.cs" />
+    <Compile Include="Migrations\201607041851330_Initial.Designer.cs">
+      <DependentUpon>201607041851330_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -347,8 +347,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606231509273_Initial.resx">
-      <DependentUpon>201606231509273_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607041851330_Initial.resx">
+      <DependentUpon>201607041851330_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -369,7 +369,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>42851</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:5555/</IISUrl>
+          <IISUrl>http://localhost:4444/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -49,6 +49,10 @@ namespace AccountOwnership.Controllers
                 .Include(x => x.SVP)
                 .Include(x => x.VP)
                 .Include(x => x.ED)
+                .Include(x => x.TAM)
+                .Include(x => x.Finance)
+                .Include(x => x.eWFM)
+                .Include(x => x.POC)
                 .Include(x => x.Status);
 
             return Ok(recordFound);
@@ -108,6 +112,10 @@ namespace AccountOwnership.Controllers
             db.Entry(record.SVP).State = EntityState.Unchanged;
             db.Entry(record.VP).State = EntityState.Unchanged;
             db.Entry(record.ED).State = EntityState.Unchanged;
+            db.Entry(record.TAM).State = EntityState.Unchanged;
+            db.Entry(record.Finance).State = EntityState.Unchanged;
+            db.Entry(record.eWFM).State = EntityState.Unchanged;
+            db.Entry(record.POC).State = EntityState.Unchanged;
             db.Entry(record.Status).State = EntityState.Unchanged;
             db.Entry(record.Client).State = EntityState.Unchanged;
 
