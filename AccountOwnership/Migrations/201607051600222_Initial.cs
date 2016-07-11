@@ -13,7 +13,6 @@ namespace AccountOwnership.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        Code = c.Long(nullable: false),
                         GL_CLT_CD = c.String(),
                         Active = c.Boolean(nullable: false),
                         Parent_Id = c.Int(),
