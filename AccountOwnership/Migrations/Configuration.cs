@@ -31,9 +31,9 @@ namespace AccountOwnership.Migrations
 
             context.Employees.AddOrUpdate(x => x.Id, emp1, emp2, emp3, emp4, emp5, emp6, emp7, emp8);
 
-            Client cli1 = new Client { Id = 1, Code = 1234, Parent = null, Name = "Accenture", GL_CLT_CD = "TL01", Active = true};
-            Client cli2 = new Client { Id = 2, Code = 2222, Parent = cli1, Name = "Accenture MX", GL_CLT_CD = "TL02", Active = true };
-            Client cli3 = new Client { Id = 3, Code = 3333, Parent = cli2, Name = "Accenture CDMX", GL_CLT_CD = "TL03", Active = true };
+            Client cli1 = new Client { Id = 1, Parent = null, Name = "Accenture", GL_CLT_CD = "TL01", Active = true};
+            Client cli2 = new Client { Id = 2, Parent = cli1, Name = "Accenture MX", GL_CLT_CD = "22202", Active = true };
+            Client cli3 = new Client { Id = 3, Parent = cli2, Name = "Accenture CDMX", GL_CLT_CD = "3003", Active = true };
 
             context.Clients.AddOrUpdate(x => x.Id, cli1,cli2, cli3);
 
@@ -42,7 +42,7 @@ namespace AccountOwnership.Migrations
                 {
                     Id = 1,
                     StartTime = DateTime.Now,
-                    Client = cli1,
+                    Client = cli2,
                     EVP = emp1,
                     SVP = emp2,
                     VP = emp3,
@@ -99,7 +99,7 @@ namespace AccountOwnership.Migrations
                 {
                     Id = 4,
                     StartTime = DateTime.Now,
-                    Client = cli1,
+                    Client = cli2,
                     EVP = emp4,
                     SVP = emp2,
                     VP = emp3,
@@ -156,7 +156,7 @@ namespace AccountOwnership.Migrations
                 {
                     Id = 7,
                     StartTime = DateTime.Now,
-                    Client = cli1,
+                    Client = cli3,
                     EVP = emp7,
                     SVP = emp2,
                     VP = emp3,
